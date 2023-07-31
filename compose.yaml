@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: channel-api
+    # command: npx concurrently \"tsc --watch \" \"nodemon -q dist/index.js\"
+    command: "npm run dev"
+      # context: .
+      # dockerfile: Dockerfile
+      # command: concurrently \"tsc --watch \" \"nodemon -q dist/index.js\"
+    ports:
+      - 3000:3000
+
+    volumes:
+      - ./server:/server
+      - /server/node_modules #sharp requires build specific files for example when npm install in windows
