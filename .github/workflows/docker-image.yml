@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           
       - name: Build and push the image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        run: DOCKER_BUILDKIT=1 docker build . --file Dockerfile --tag my-image-name:$(date +%s)
         
       - name: Push the Docker image
         run: docker push my-image-name:$(date +%s)
