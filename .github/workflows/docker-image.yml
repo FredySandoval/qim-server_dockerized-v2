@@ -16,10 +16,10 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           
       - name: Build and push the image
-        run: docker build . --tag shockerovip/qim-server_dockerized-v2:latest
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
         
       - name: Push the Docker image
-        run: docker push shockerovip/qim-server_dockerized-v2:latest
+        run: docker push my-image-name:$(date +%s)
        # docker push shockerovip/qim-server_dockerized-v2:latest
        # docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
        
