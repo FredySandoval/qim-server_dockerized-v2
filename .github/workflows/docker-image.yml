@@ -22,7 +22,7 @@ jobs:
         run: DOCKER_BUILDKIT=1 docker build . --file Dockerfile --tag my-image-name:latest
         
       - name: Push the Docker image
-        run: docker push my-image-name:latest
+        run: docker push shockerovip/qim-server_dockerized-v2:latest
        # docker push shockerovip/qim-server_dockerized-v2:latest
        # docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
        
