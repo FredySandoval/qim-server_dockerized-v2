@@ -1,21 +1,28 @@
 name: Build and Deploy
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          
       - name: Build and push the image
-        run: |
-          docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker build . --tag shockerovip/qim-server_dockerized-v2:latest
-          docker push shockerovip/qim-server_dockerized-v2:latest
+        run: docker build . --tag shockerovip/qim-server_dockerized-v2:latest
+        
+      - name: Push the Docker image
+        run: docker push shockerovip/qim-server_dockerized-v2:latest
+       # docker push shockerovip/qim-server_dockerized-v2:latest
+       # docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
+       
       #repository: ${{ github.repository }}
       #tag_with_ref: true
       #tag_with_sha: true
