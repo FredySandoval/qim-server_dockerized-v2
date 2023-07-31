@@ -19,10 +19,10 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        repository: ${{ github.repository }}
-        tag_with_ref: true
-        tag_with_sha: true
-        tags: ${{ github.sha }}
+        #repository: ${{ github.repository }}
+        #tag_with_ref: true
+        #tag_with_sha: true
+        #tags: ${{ github.sha }}
     
     #- name: Build the Docker image
       #run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
