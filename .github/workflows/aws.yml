@@ -59,11 +59,12 @@ jobs:
         ECR_REPOSITORY: test-ecs
         IMAGE_TAG: latest
       run: |
-        DOCKER_BUILDKIT=1 docker build -t test-ecs .
-        docker tag test-ecs:latest public.ecr.aws/e2p3a3o8/test-ecs:latest
-        docker push public.ecr.aws/e2p3a3o8/test-ecs:latest
-        echo $ECR_REGISTRY
-        echo $ECR_REPOSITORY
+        DOCKER_BUILDKIT=1 docker build -t test-ecr-two .
+        docker tag test-ecr-two:latest 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
+        docker push 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
+      # docker push public.ecr.aws/e2p3a3o8/test-ecs:latest
+      #  echo $ECR_REGISTRY
+      #  echo $ECR_REPOSITORY
       #DOCKER_BUILDKIT=1 docker build . --file Dockerfile -t public.ecr.aws/e2p3a3o8/test-ecs:latest
 
       # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
