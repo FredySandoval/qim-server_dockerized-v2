@@ -1,7 +1,9 @@
 name: Build and Deploy
 
 on:
-  push
+  push:
+    paths:
+      - '.github/workflows/docker-image.yml'
 
 jobs:
   build:
