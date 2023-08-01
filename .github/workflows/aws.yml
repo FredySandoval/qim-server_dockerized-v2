@@ -59,9 +59,12 @@ jobs:
         ECR_REPOSITORY: test-ecs
         IMAGE_TAG: latest
       run: |
-        DOCKER_BUILDKIT=1 docker build . --file Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+        DOCKER_BUILDKIT=1 docker build . --file Dockerfile -t public.ecr.aws/e2p3a3o8/test-ecs:latest
+        echo $ECR_REGISTRY
+        echo $ECR_REPOSITORY
+        docker push public.ecr.aws/e2p3a3o8/test-ecs:latest
+      # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      #  echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
 #    - name: Fill in the new image ID in the Amazon ECS task definition
 #      id: task-def
