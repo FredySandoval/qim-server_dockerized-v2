@@ -23,16 +23,3 @@ jobs:
         
       - name: Push the Docker image
         run: docker push shockerovip/qimrepo:latest
-       # docker push shockerovip/qim-server_dockerized-v2:latest
-       # docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
-       
-      #repository: ${{ github.repository }}
-      #tag_with_ref: true
-      #tag_with_sha: true
-      #tags: ${{ github.sha }}
-    
-    #- name: Build the Docker image
-      #run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    #  run: |
-    #    docker build -t username/repo-client:latest ./client
-    #   docker push username/repo-client:latest
