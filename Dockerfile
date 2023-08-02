@@ -44,5 +44,5 @@ COPY --from=client-build /client/dist ./dist/public
 COPY --from=deps /server/node_modules ./node_modules
 COPY --from=build /server/dist ./dist
 
-EXPOSE 3000
+EXPOSE 80
 CMD npm run start

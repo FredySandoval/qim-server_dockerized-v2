@@ -97,7 +97,7 @@ if (!process.env.production) {
     }
 }
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 app.listen(port, () => {
     if (!process.env.production) {
         console.log(`Listening on http://${localhostIP}:${port}`);
