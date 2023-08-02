@@ -55,7 +55,7 @@ jobs:
     - name: show env
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: test-ecs
+        ECR_REPOSITORY: test-ecr-two
         IMAGE_TAG: latest
       run: echo ECR_REGISTRY $ECR_REGISTRY ECR_REPOSITORY $ECR_REPOSITORY
 
@@ -63,8 +63,11 @@ jobs:
       id: build-image
       run: |
         DOCKER_BUILDKIT=1 docker build -t test-ecr-two .
-        docker tag test-ecr-two:latest 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
-        docker push 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
+        docker tag test-ecr-two:latest $ECR_REGISTRY/test-ecr-two:latest
+        docker push $ECR_REGISTRY/test-ecr-two:latest
+     # docker tag test-ecr-two:latest 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
+     #                                          ***.dkr.ecr.us-east-1.amazonaws.com
+     #   docker push 214351266227.dkr.ecr.us-east-1.amazonaws.com/test-ecr-two:latest
       # docker push public.ecr.aws/e2p3a3o8/test-ecs:latest
       #  echo $ECR_REGISTRY
       #  echo $ECR_REPOSITORY
