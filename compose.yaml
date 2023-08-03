@@ -8,7 +8,7 @@ services:
       # dockerfile: Dockerfile
       # command: concurrently \"tsc --watch \" \"nodemon -q dist/index.js\"
     ports:
-      - 80:80
+      - 443:443
 
     volumes:
       - ./server:/server
