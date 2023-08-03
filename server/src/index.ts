@@ -40,7 +40,7 @@ app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 //replace with your stuff 
 app.get('/test', (req, res) => {
   res.json({
-    message: "😀 😃 😄 ✨✨ Yay! It's working2... ✨✨ 👌 👌 👌"
+    message: "😀 😃 😄 ✨✨ Yay! It's working3... ✨✨ 👌 👌 👌"
   });
 });
 
